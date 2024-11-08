@@ -7,9 +7,6 @@ import org.example.parser.CandyStAXParser;
 import org.example.validator.XMLValidator;
 
 import java.util.List;
-import java.io.File;
-import java.util.Comparator;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -21,12 +18,14 @@ public class Main {
         // Використання DOM парсера
         CandyDOMParser domParser = new CandyDOMParser();
         List<Candy> domCandies = domParser.parse(inputXml);
-        System.out.println("Parsed using DOM: " + domCandies);
+        System.out.println("Parsed using DOM:");
+        domParser.printCandies(domCandies);
 
         // Використання SAX парсера
         CandySAXParser saxParser = new CandySAXParser();
         List<Candy> saxCandies = saxParser.parse(inputXml);
-        System.out.println("Parsed using SAX: " + saxCandies);
+        System.out.println("Parsed using SAX: ");
+        saxParser.printCandyDetails(saxCandies);
 
         // Використання StAX парсера
         CandyStAXParser staxParser = new CandyStAXParser();
@@ -38,4 +37,3 @@ public class Main {
         transformer.validate(inputXml, xsltFile, outputXml);
     }
 }
-
