@@ -25,11 +25,17 @@ public class CandySAXParser {
 
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                    currentValue = new StringBuilder();
+                    currentElement = qName.toLowerCase();
+
                     if (qName.equalsIgnoreCase("Candy")) {
                         currentCandy = new Candy();
                     }
-                    currentValue = new StringBuilder();
-                    currentElement = qName.toLowerCase();
+
+                    // Ініціалізація списку інгредієнтів
+                    if (qName.equalsIgnoreCase("Ingredients")) {
+                        currentCandy.setIngredients(new ArrayList<>());
+                    }
                 }
 
                 @Override
@@ -39,52 +45,52 @@ public class CandySAXParser {
 
                 @Override
                 public void endElement(String uri, String localName, String qName) throws SAXException {
+                    String value = currentValue.toString().trim();
+
                     switch (qName.toLowerCase()) {
                         case "candy":
                             candies.add(currentCandy);
                             break;
                         case "name":
-                            currentCandy.setName(currentValue.toString().trim());
+                            currentCandy.setName(value);
                             break;
                         case "energy":
-                            String energyValue = currentValue.toString().trim();
-                            if (!energyValue.isEmpty()) {
-                                try {
-                                    currentCandy.setEnergy(Integer.parseInt(energyValue));
-                                } catch (NumberFormatException e) {
-                                    System.out.println("Invalid energy value: " + energyValue);
-                                }
+                            try {
+                                currentCandy.setEnergy(Integer.parseInt(value));
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid energy value: " + value);
                             }
                             break;
                         case "type":
-                            currentCandy.getType().add(currentValue.toString().trim());
-                            break;
-                        case "ingredients":
-                            currentCandy.setIngredients(new ArrayList<>());
+                            currentCandy.getType().add(value);
                             break;
                         case "ingredient":
-                            currentCandy.getIngredients().add(currentValue.toString().trim());
+                            // Додавання інгредієнтів з значенням
+                            currentCandy.getIngredients().add(value);
                             break;
-                        case "protein":
-                            String proteinValue = currentValue.toString().trim();
-                            if (!proteinValue.isEmpty()) {
-                                currentCandy.setProtein(Integer.parseInt(proteinValue));
+                        case "proteins":
+                            try {
+                                currentCandy.setProtein(Double.parseDouble(value));
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid protein value: " + value);
                             }
                             break;
-                        case "fat":
-                            String fatValue = currentValue.toString().trim();
-                            if (!fatValue.isEmpty()) {
-                                currentCandy.setFat(Integer.parseInt(fatValue));
+                        case "fats":
+                            try {
+                                currentCandy.setFat(Double.parseDouble(value));
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid fat value: " + value);
                             }
                             break;
-                        case "carbohydrate":
-                            String carbohydrateValue = currentValue.toString().trim();
-                            if (!carbohydrateValue.isEmpty()) {
-                                currentCandy.setCarbohydrate(Integer.parseInt(carbohydrateValue));
+                        case "carbohydrates":
+                            try {
+                                currentCandy.setCarbohydrate(Double.parseDouble(value));
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid carbohydrate value: " + value);
                             }
                             break;
                         case "production":
-                            currentCandy.setProduction(currentValue.toString().trim());
+                            currentCandy.setProduction(value);
                             break;
                     }
                 }
@@ -95,5 +101,31 @@ public class CandySAXParser {
             e.printStackTrace();
         }
         return candies.isEmpty() ? null : candies;
+    }
+
+    // Метод для виведення результату у бажаному форматі
+    public void printCandyDetails(List<Candy> saxCandies) {
+        for (Candy candy : candies) {
+            System.out.println("Name: " + candy.getName());
+            System.out.println("Energy: " + candy.getEnergy());
+            System.out.println("Type: " + String.join(", ", candy.getType()));
+
+            // Виведення інгредієнтів
+            if (candy.getIngredients().isEmpty()) {
+                System.out.println("Ingredient: N/A");
+            } else {
+                for (String ingredient : candy.getIngredients()) {
+                    System.out.println("Ingredient: " + ingredient);
+                }
+            }
+
+            // Виведення макроелементів (якщо значення не null)
+            System.out.println("Proteins: " + candy.getProtein());
+            System.out.println("Fats: " + candy.getFat());
+            System.out.println("Carbohydrates: " + candy.getCarbohydrate());
+
+            System.out.println("Production: " + (candy.getProduction() != null ? candy.getProduction() : "N/A"));
+            System.out.println("====================================");
+        }
     }
 }
