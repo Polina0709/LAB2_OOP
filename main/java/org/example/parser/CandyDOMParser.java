@@ -27,20 +27,29 @@ public class CandyDOMParser {
                 Element element = (Element) nList.item(temp);
                 Candy candy = new Candy();
 
+                // Парсимо основні дані
                 candy.setName(element.getElementsByTagName("Name").item(0).getTextContent().trim());
                 candy.setEnergy(Integer.parseInt(element.getElementsByTagName("Energy").item(0).getTextContent().trim()));
 
+                // Парсимо типи
                 NodeList typeList = element.getElementsByTagName("Type");
                 for (int j = 0; j < typeList.getLength(); j++) {
                     candy.getType().add(typeList.item(j).getTextContent().trim());
                 }
 
-                NodeList ingredientList = element.getElementsByTagName("Ingredients");
-                for (int j = 0; j < ingredientList.getLength(); j++) {
-                    candy.getIngredients().add(ingredientList.item(j).getTextContent().trim());
+                // Парсимо інгредієнти
+                String[] ingredientNames = {"Water", "Sugar", "Fructose", "ChocolateType", "Vanilla"};
+                for (String ingredientName : ingredientNames) {
+                    NodeList ingredientList = element.getElementsByTagName(ingredientName);
+                    if (ingredientList.getLength() > 0) {
+                        String ingredientValue = ingredientList.item(0).getTextContent().trim();
+                        candy.getIngredients().add(ingredientValue);
+                    } else {
+                        candy.getIngredients().add("N/A"); // Якщо інгредієнт не знайдено
+                    }
                 }
 
-                // Парсинг значень білків, жирів і вуглеводів
+                // Парсимо харчові компоненти
                 int protein = Integer.parseInt(element.getElementsByTagName("Proteins").item(0).getTextContent().trim());
                 int fat = Integer.parseInt(element.getElementsByTagName("Fats").item(0).getTextContent().trim());
                 int carbohydrate = Integer.parseInt(element.getElementsByTagName("Carbohydrates").item(0).getTextContent().trim());
@@ -49,6 +58,7 @@ public class CandyDOMParser {
                 candy.setFat(fat);
                 candy.setCarbohydrate(carbohydrate);
 
+                // Парсимо виробника
                 candy.setProduction(element.getElementsByTagName("Production").item(0).getTextContent().trim());
 
                 candies.add(candy);
@@ -57,5 +67,47 @@ public class CandyDOMParser {
             e.printStackTrace();
         }
         return candies.isEmpty() ? null : candies;
+    }
+
+    public void printCandies(List<Candy> candies) {
+        if (candies != null) {
+            for (Candy candy : candies) {
+                System.out.println("Name: " + candy.getName());
+                System.out.println("Energy: " + candy.getEnergy());
+
+                // Виведення типів
+                for (String type : candy.getType()) {
+                    System.out.println("Type: " + type);
+                }
+
+                // Виведення інгредієнтів
+                String[] ingredientNames = {"Water", "Sugar", "Fructose", "ChocolateType", "Vanilla"};
+                int i = 0;
+
+                // Виведення кожного інгредієнта
+                for (String ingredient : candy.getIngredients()) {
+                    if (i < ingredientNames.length) {
+                        System.out.println("Ingredient: " + ingredientNames[i] + ": " + ingredient);
+                    } else {
+                        // Якщо інгредієнтів більше, вивести за замовчуванням
+                        System.out.println("Ingredient: " + ingredientNames[ingredientNames.length - 1] + ": " + ingredient);
+                    }
+                    i++;
+                }
+
+                // Виведення харчових компонентів
+                System.out.println("Proteins: " + candy.getProtein());
+                System.out.println("Fats: " + candy.getFat());
+                System.out.println("Carbohydrates: " + candy.getCarbohydrate());
+
+                // Виведення виробника
+                System.out.println("Production: " + candy.getProduction());
+
+                // Роздільник для кращого вигляду
+                System.out.println("--------------------------------------");
+            }
+        } else {
+            System.out.println("No candies found.");
+        }
     }
 }
