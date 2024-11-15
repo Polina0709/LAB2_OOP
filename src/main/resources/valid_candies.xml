@@ -1,0 +1,12 @@
+<Candies>
+    <Candy>
+        <Name>Candy Name</Name>
+        <Energy>250</Energy>
+        <Type>Chocolate</Type>
+    </Candy>
+    <Candy>
+        <Name>Sweet Candy</Name>
+        <Energy>150</Energy>
+        <Type>Fruit</Type>
+    </Candy>
+</Candies>

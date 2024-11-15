@@ -1,0 +1,47 @@
+<xs:element name="Candies" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Candy">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="Name" type="xs:string"/>
+                    <xs:element name="Energy" type="xs:int"/>
+                    <xs:element name="Type" maxOccurs="unbounded">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="CARAMEL"/>
+                                <xs:enumeration value="TOFFEE"/>
+                                <xs:enumeration value="CHOCOLATE_WITH_FILLING"/>
+                                <xs:enumeration value="CHOCOLATE_WITHOUT_FILLING"/>
+                                <xs:enumeration value="CANDY"/>
+                                <xs:enumeration value="GUMMY"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Ingredients">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Water" type="xs:int"/>
+                                <xs:element name="Sugar" type="xs:int"/>
+                                <xs:element name="Fructose" type="xs:int"/>
+                                <xs:element name="ChocolateType" type="xs:string"/>
+                                <xs:element name="Vanilla" type="xs:int"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Value">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Proteins" type="xs:double"/>
+                                <xs:element name="Fats" type="xs:double"/>
+                                <xs:element name="Carbohydrates" type="xs:double"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Production" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>

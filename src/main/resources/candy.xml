@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Candy>
+    <Name>Gummy Bears</Name>
+    <Energy>150</Energy>
+    <Type>gummy</Type>
+    <Ingredients>
+        <Water>10</Water>
+        <Sugar>50</Sugar>
+    </Ingredients>
+    <Value>
+        <Proteins>2.0</Proteins>
+        <Fats>0.0</Fats>
+        <Carbohydrates>36.0</Carbohydrates>
+    </Value>
+    <Production>Some Manufacturer</Production>
+</Candy>

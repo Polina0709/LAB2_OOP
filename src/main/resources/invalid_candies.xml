@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Candies>
+    <Candy>
+        <Name>Chocolate Delight</Name>
+        <Energy>250</Energy>
+        <Type>Chocolate</Type>
+        <!-- Пропущений тег Ingredients -->
+        <Value>
+            <Proteins>5.5</Proteins>
+            <Fats>15.2</Fats>
+            <Carbohydrates>30.1</Carbohydrates>
+        </Value>
+        <Production>USA</Production>
+    </Candy>
+    <Candy>
+        <Name>Vanilla Twist</Name>
+        <Energy>200</Energy>
+        <Type>Vanilla</Type>
+        <Ingredients>
+            <Water>12</Water>
+            <Sugar>25</Sugar>
+            <Fructose>3</Fructose>
+            <!-- Пропущений тег ChocolateType, що є критичним для парсера -->
+            <Vanilla>8</Vanilla>
+        </Ingredients>
+        <Value>
+            <Proteins>3.2</Proteins>
+            <Fats>12.8</Fats>
+            <Carbohydrates>27.5</Carbohydrates>
+        </Value>
+        <!-- Пропущений тег Production -->
+    </Candy>
+    <Candy>
+        <!-- Цукерка без Name і з помилкою в Energy -->
+        <Energy>abc</Energy>
+        <Type>Chocolate</Type>
+        <Ingredients>
+            <Water>10</Water>
+            <Sugar>20</Sugar>
+            <Fructose>2</Fructose>
+            <ChocolateType>Dark</ChocolateType>
+            <Vanilla>3</Vanilla>
+        </Ingredients>
+        <Value>
+            <Proteins>5.0</Proteins>
+            <Fats>10.5</Fats>
+            <Carbohydrates>25.0</Carbohydrates>
+        </Value>
+        <Production>Canada</Production>
+    </Candy>
+</Candies>

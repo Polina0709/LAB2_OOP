@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><root>
+    <CHOCOLATE_WITH_FILLING>
+        <Candy>
+            <Name>Chocolate Bar</Name>
+            <Energy>250</Energy>
+            <Type>CHOCOLATE_WITH_FILLING</Type>
+            <Ingredients>
+                <Water>20</Water>
+                <Sugar>300</Sugar>
+                <Fructose>50</Fructose>
+                <ChocolateType>milk</ChocolateType>
+                <Vanilla>5</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>6</Proteins>
+                <Fats>12</Fats>
+                <Carbohydrates>40</Carbohydrates>
+            </Value>
+            <Production>Chocolate Factory "Sweet Taste"</Production>
+        </Candy>
+        <Candy>
+            <Name>Chocolate Candy with Nuts</Name>
+            <Energy>280</Energy>
+            <Type>CHOCOLATE_WITH_FILLING</Type>
+            <Ingredients>
+                <Water>5</Water>
+                <Sugar>290</Sugar>
+                <Fructose>70</Fructose>
+                <ChocolateType>dark</ChocolateType>
+                <Vanilla>10</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>5</Proteins>
+                <Fats>15</Fats>
+                <Carbohydrates>45</Carbohydrates>
+            </Value>
+            <Production>Confectionery "Nut Delight"</Production>
+        </Candy>
+    </CHOCOLATE_WITH_FILLING>
+    <TOFFEE>
+        <Candy>
+            <Name>Toffee</Name>
+            <Energy>150</Energy>
+            <Type>TOFFEE</Type>
+            <Ingredients>
+                <Water>10</Water>
+                <Sugar>250</Sugar>
+                <Fructose>30</Fructose>
+                <ChocolateType/>
+                <Vanilla>2</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>10</Proteins>
+                <Fats>20</Fats>
+                <Carbohydrates>37</Carbohydrates>
+            </Value>
+            <Production>Confectionery "Sweets"</Production>
+        </Candy>
+    </TOFFEE>
+    <CHOCOLATE_WITHOUT_FILLING>
+        <Candy>
+            <Name>Chocolate Candy</Name>
+            <Energy>180</Energy>
+            <Type>CHOCOLATE_WITHOUT_FILLING</Type>
+            <Ingredients>
+                <Water>15</Water>
+                <Sugar>230</Sugar>
+                <Fructose>40</Fructose>
+                <ChocolateType/>
+                <Vanilla>3</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>1</Proteins>
+                <Fats>8</Fats>
+                <Carbohydrates>36</Carbohydrates>
+            </Value>
+            <Production>Factory "Chocolate City"</Production>
+        </Candy>
+    </CHOCOLATE_WITHOUT_FILLING>
+    <CARAMEL>
+        <Candy>
+            <Name>Lollipop</Name>
+            <Energy>100</Energy>
+            <Type>CARAMEL</Type>
+            <Ingredients>
+                <Water>5</Water>
+                <Sugar>90</Sugar>
+                <Fructose>10</Fructose>
+                <ChocolateType/>
+                <Vanilla>1</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>30</Proteins>
+                <Fats>40</Fats>
+                <Carbohydrates>25</Carbohydrates>
+            </Value>
+            <Production>Factory "Lollipops and Candies"</Production>
+        </Candy>
+        <Candy>
+            <Name>Fruit Caramel</Name>
+            <Energy>120</Energy>
+            <Type>CARAMEL</Type>
+            <Ingredients>
+                <Water>8</Water>
+                <Sugar>120</Sugar>
+                <Fructose>20</Fructose>
+                <ChocolateType/>
+                <Vanilla>2</Vanilla>
+            </Ingredients>
+            <Value>
+                <Proteins>1</Proteins>
+                <Fats>1</Fats>
+                <Carbohydrates>28</Carbohydrates>
+            </Value>
+            <Production>Confectionery "Fruit Flavors"</Production>
+        </Candy>
+    </CARAMEL>
+</root>
