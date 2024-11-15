@@ -10,8 +10,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CandyDOMParser {
+    private static final Logger logger = Logger.getLogger(CandyDOMParser.class.getName());
+
     public List<Candy> parse(String filePath) {
         List<Candy> candies = new ArrayList<>();
         try {
@@ -64,50 +68,33 @@ public class CandyDOMParser {
                 candies.add(candy);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error parsing the file", e);
         }
         return candies.isEmpty() ? null : candies;
     }
 
     public void printCandies(List<Candy> candies) {
+        Logger logger = Logger.getLogger(CandyDOMParser.class.getName());
         if (candies != null) {
             for (Candy candy : candies) {
-                System.out.println("Name: " + candy.getName());
-                System.out.println("Energy: " + candy.getEnergy());
-
-                // Виведення типів
-                for (String type : candy.getType()) {
-                    System.out.println("Type: " + type);
-                }
+                logger.info("Name: " + candy.getName());
+                logger.info("Energy: " + candy.getEnergy());
+                logger.info("Type: " + (candy.getType().isEmpty() ? "N/A" : String.join(", ", candy.getType())));
 
                 // Виведення інгредієнтів
-                String[] ingredientNames = {"Water", "Sugar", "Fructose", "ChocolateType", "Vanilla"};
-                int i = 0;
-
-                // Виведення кожного інгредієнта
-                for (String ingredient : candy.getIngredients()) {
-                    if (i < ingredientNames.length) {
-                        System.out.println("Ingredient: " + ingredientNames[i] + ": " + ingredient);
-                    } else {
-                        // Якщо інгредієнтів більше, вивести за замовчуванням
-                        System.out.println("Ingredient: " + ingredientNames[ingredientNames.length - 1] + ": " + ingredient);
-                    }
-                    i++;
-                }
+                logger.info("Ingredient: " + (candy.getIngredients().isEmpty() ? "N/A" : String.join(", ", candy.getIngredients())));
 
                 // Виведення харчових компонентів
-                System.out.println("Proteins: " + candy.getProtein());
-                System.out.println("Fats: " + candy.getFat());
-                System.out.println("Carbohydrates: " + candy.getCarbohydrate());
+                logger.info("Proteins: " + candy.getProtein());
+                logger.info("Fats: " + candy.getFat());
+                logger.info("Carbohydrates: " + candy.getCarbohydrate());
 
-                // Виведення виробника
-                System.out.println("Production: " + candy.getProduction());
-
-                // Роздільник для кращого вигляду
-                System.out.println("--------------------------------------");
+                // Виробник
+                logger.info("Production: " + candy.getProduction());
+                logger.info("--------------------------------------");
             }
         } else {
-            System.out.println("No candies found.");
+            logger.warning("No candies found.");
         }
     }
 }
